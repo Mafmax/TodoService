@@ -18,21 +18,36 @@ namespace TodoApi.Controllers
     {
         private readonly ITodoService service;
 
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="service"></param>
+        /// <param name="logger"></param>
         public TodoItemsController(ITodoService service)
         {
 
             this.service = service;
-          
         }
-
+        /// <summary>
+        /// Gets the list of all todo items
+        /// </summary>
+        /// <returns>List of TodoItems</returns>
+        /// <response code="200">Returns list of TodoItems</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
             return await service.GetTodoItems().ToListAsync();
         }
-
+        /// <summary>
+        /// Gets todo item by id
+        /// </summary>
+        /// <param name="id">TodoItem ID</param>
+        /// <returns>Found item</returns>
+        /// <response code="200">Returns found TodoItems</response>
+        /// <response code="404">If TodoItem not found.</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
@@ -40,25 +55,34 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
-               
                 return NotFound();
             }
 
             return todoItem;
         }
-
+        /// <summary>
+        /// Updates todo item in storage
+        /// </summary>
+        /// <param name="id">TodoItem ID</param>
+        /// <param name="todoItemDTO">Item to update</param>
+        /// <returns>No content</returns>
+        /// <response code="204">If TodoItem updated successfully</response>
+        /// <response code="400">If IDs do not matching</response>
+        /// <response code="404">If TodoItem not found</response>
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
             if (id != todoItemDTO.Id)
             {
-          return BadRequest();
+                return BadRequest();
             }
 
             var todoItem = await service.GetTodoItemAsync(id);
             if (todoItem == null)
             {
-               
                 return NotFound();
             }
 
@@ -66,15 +90,20 @@ namespace TodoApi.Controllers
             {
                 await service.UpdateTodoItemAsync(todoItemDTO);
             }
-            catch (DbUpdateConcurrencyException) when (!service.TodoItemExists(id))
+            catch (DbUpdateConcurrencyException ex) when (!service.TodoItemExists(id))
             {
-
                 return NotFound();
             }
 
             return NoContent();
         }
-
+        /// <summary>
+        /// Create todo item in storage
+        /// </summary>
+        /// <param name="todoItemDTO">Item to create</param>
+        /// <returns>Newly created TodoItem</returns>
+        /// <response code="201">Item created successfully</response>
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
@@ -86,7 +115,15 @@ namespace TodoApi.Controllers
         }
 
 
-     
+        /// <summary>
+        /// Remove element from storage
+        /// </summary>
+        /// <param name="id">TodoItem id</param>
+        /// <returns>No content</returns>
+        /// <response code="204">TodoItem deleted successfully</response>
+        /// <response code="404">TodoItem not found. Make sure the ID is correct</response>
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
@@ -94,7 +131,6 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
-
                 return NotFound();
             }
 
