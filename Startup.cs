@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace TodoApi
 {
@@ -18,11 +19,27 @@ namespace TodoApi
 
         public IConfiguration Configuration { get; }
 
+        public Action<DbContextOptionsBuilder> GetInMemoryBuilder(string name)
+        {
+            return opt => opt.UseInMemoryDatabase(name);
+        }
+        public Action<DbContextOptionsBuilder> GetMsSqlBuilder(string name)
+        {
+            var connectionString = Configuration.GetConnectionString(name);
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new Exception($"Connection string {name} not found");
+            }
+            return opt => opt.UseSqlServer(connectionString);
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            string connectionName = "TodoList";
+            //var dbBuilder = GetInMemoryBuilder(connectionName);
+            var dbBuilder = GetMsSqlBuilder(connectionName);
+            services.AddDbContext<TodoContext>(dbBuilder);
             services.AddScoped<ITodoService, TodoService>();
 
             services.AddControllers();
