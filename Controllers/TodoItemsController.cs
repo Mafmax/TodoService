@@ -17,16 +17,18 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly ITodoService service;
+        private readonly ILogger<TodoItemsController> logger;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="service"></param>
         /// <param name="logger"></param>
-        public TodoItemsController(ITodoService service)
+        public TodoItemsController(ITodoService service, ILogger<TodoItemsController> logger)
         {
 
             this.service = service;
+            this.logger = logger;
         }
         /// <summary>
         /// Gets the list of all todo items
@@ -55,6 +57,7 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
+                logger.LogWarning("TodoItem not found. Id was {ID}", id);
                 return NotFound();
             }
 
@@ -77,12 +80,14 @@ namespace TodoApi.Controllers
         {
             if (id != todoItemDTO.Id)
             {
+                logger.LogWarning("Update TodoItem fails. IDs dont match. Id was {id}, TodoItem.Id was {TodoItem.Id}", id, todoItemDTO.Id);
                 return BadRequest();
             }
 
             var todoItem = await service.GetTodoItemAsync(id);
             if (todoItem == null)
             {
+                logger.LogWarning("TodoItem not found. Id was {ID}", id);
                 return NotFound();
             }
 
@@ -92,6 +97,7 @@ namespace TodoApi.Controllers
             }
             catch (DbUpdateConcurrencyException ex) when (!service.TodoItemExists(id))
             {
+                logger.LogError(ex, "An exception was thrown");
                 return NotFound();
             }
 
@@ -131,6 +137,7 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
+                logger.LogWarning("TodoItem not found. Id was {ID}", id);
                 return NotFound();
             }
 

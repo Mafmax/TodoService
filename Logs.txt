@@ -1,0 +1,6 @@
+2021-09-14 20:21:13.891 +05:00 [INF] App starting up
+2021-09-14 20:21:30.657 +05:00 [INF] HTTP GET /api/TodoItems responded 200 in 1257.8469 ms
+2021-09-14 20:21:32.962 +05:00 [INF] HTTP GET /api/TodoItems responded 200 in 12.7312 ms
+2021-09-14 20:21:33.163 +05:00 [INF] HTTP GET /api/TodoItems responded 200 in 43.0851 ms
+2021-09-14 20:21:33.308 +05:00 [INF] HTTP GET /api/TodoItems responded 200 in 11.9826 ms
+2021-09-14 20:21:33.446 +05:00 [INF] HTTP GET /api/TodoItems responded 200 in 8.2796 ms
