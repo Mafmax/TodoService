@@ -2,6 +2,7 @@ using Mafmax.TodoApi.BLL.Services;
 using Mafmax.TodoApi.DAL.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -58,7 +59,11 @@ namespace TodoApi
                 opt.IncludeXmlComments(xmlPath);
             });
 
-            services.AddControllers();
+            services.AddControllers(opt =>
+            {
+                opt.OutputFormatters.Clear();
+                opt.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
