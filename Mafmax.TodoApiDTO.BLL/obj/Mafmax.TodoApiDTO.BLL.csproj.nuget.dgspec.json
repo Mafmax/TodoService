@@ -1,0 +1,132 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.BLL\\Mafmax.TodoApiDTO.BLL.csproj": {}
+  },
+  "projects": {
+    "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.BLL\\Mafmax.TodoApiDTO.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.BLL\\Mafmax.TodoApiDTO.BLL.csproj",
+        "projectName": "Mafmax.TodoApiDTO.BLL",
+        "projectPath": "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.BLL\\Mafmax.TodoApiDTO.BLL.csproj",
+        "packagesPath": "C:\\Users\\max\\.nuget\\packages\\",
+        "outputPath": "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\max\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.DAL\\Mafmax.TodoApiDTO.DAL.csproj": {
+                "projectPath": "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.DAL\\Mafmax.TodoApiDTO.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.207\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.DAL\\Mafmax.TodoApiDTO.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.DAL\\Mafmax.TodoApiDTO.DAL.csproj",
+        "projectName": "Mafmax.TodoApiDTO.DAL",
+        "projectPath": "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.DAL\\Mafmax.TodoApiDTO.DAL.csproj",
+        "packagesPath": "C:\\Users\\max\\.nuget\\packages\\",
+        "outputPath": "C:\\workspace\\VisualStudioProjects\\C# Projects\\Velvetech\\TodoApiDTO\\Mafmax.TodoApiDTO.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\max\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.207\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mafmax.TodoApiDTO.BLL\Mafmax.TodoApiDTO.BLL.csproj" />
-    <ProjectReference Include="..\Mafmax.TodoApiDTO.DAL\Mafmax.TodoApiDTO.DAL.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
